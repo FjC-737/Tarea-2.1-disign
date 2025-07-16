@@ -8,14 +8,19 @@ GET http://localhost:3000/categorias/1
 POST http://localhost:3000/categorias
 Content-Type: application/json
 
-{
-  "nombre": "Hogar"
-}
+{"nombre": "Varios" }
 
 ### Editar categoría existente
 PUT http://localhost:3000/categorias/1
 Content-Type: application/json
 
-{
-  "nombre": "Electrónica "
-}
+{ "nombre": "Recambios " }
+
+### Obtener todos los productos
+GET http://localhost:3000/productos
+
+### Obtener productos disponibles
+GET http://localhost:3000/productos/disponible
+
+### Obtener producto por ID
+GET http://localhost:3000/productos/1
