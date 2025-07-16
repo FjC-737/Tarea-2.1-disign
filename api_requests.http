@@ -1,34 +1,21 @@
-###Obtener todos los productos
-GET http://localhost:3000/productos
+### Obtener todas las categorías
+GET http://localhost:3000/categorias
 
-###Obtener un producto por ID
-GET http://localhost:3000/productos/PROD013
+### Obtener una categoría por ID
+GET http://localhost:3000/categorias/1
 
-###Obtener productos disponibles
-GET http://localhost:3000/productos/disponibles
-
-###Crear un nuevo producto
-POST http://localhost:3000/productos
+### Crear nueva categoría
+POST http://localhost:3000/categorias
 Content-Type: application/json
 
 {
-  "id": "PROD013",
-  "nombre": "Producto de prueba",
-  "precio": 100.50,
-  "descripcion": "Descripción del producto de prueba",
-  "disponible": true,
-  "fecha_ingreso": "2025-04-11"
+  "nombre": "Hogar"
 }
 
-###Actualizar un producto existente
-PUT http://localhost:3000/productos/PROD013
+### Editar categoría existente
+PUT http://localhost:3000/categorias/1
 Content-Type: application/json
 
 {
-  "nombre": "Producto de prueba actualizado",
-  "precio": 120.99,
-  "descripcion": "Descripción actualizada del producto de prueba"
+  "nombre": "Electrónica "
 }
-
-###Eliminar un producto
-DELETE http://localhost:3000/productos/PROD013

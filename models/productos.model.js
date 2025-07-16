@@ -1,0 +1,36 @@
+import pool from '../config/db.js';
+
+export const getAllProductos = async () => {
+  const [rows] = await pool.query('SELECT * FROM productos');
+  return rows;
+};
+
+export const getProductoById = async (id) => {
+  const [rows] = await pool.query('SELECT * FROM productos WHERE id = ?', [id]);
+  return rows[0];
+};
+
+export const getDisponibles = async () => {
+  const [rows] = await pool.query('SELECT * FROM productos WHERE disponible = TRUE');
+  return rows;
+};
+
+export const createProducto = async ({ nombre, precio, descripcion, disponible, categoria_id }) => {
+  const [result] = await pool.query(
+    'INSERT INTO productos (nombre, precio, descripcion, disponible, fecha_ingreso, categoria_id) VALUES (?, ?, ?, ?, NOW(), ?)',
+    [nombre, precio, descripcion, disponible, categoria_id]
+  );
+  return result.insertId;
+};
+
+
+export const updateProducto = async (id, { nombre, precio, descripcion, disponible, categoria_id }) => {
+  await pool.query(
+    'UPDATE productos SET nombre = ?, precio = ?, descripcion = ?, disponible = ?, categoria_id = ? WHERE id = ?',
+    [nombre, precio, descripcion, disponible, categoria_id, id]
+  );
+};
+
+export const deleteProducto = async (id) => {
+  await pool.query('DELETE FROM productos WHERE id = ?', [id]);
+};

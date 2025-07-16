@@ -1,12 +1,18 @@
-import productosRoutes from './routes/routes_productos.js';
-import express from 'express';
+import express from 'express'
+import router from './routes/categorias.routes.js'
+import ProductosRouter from './routes/productos.routes.js';
 
 
-const app = express();
-app.use(express.json());
+const app=express()
 
-app.use('/productos', productosRoutes);
+
+
 
 app.listen(3000, () => {
-  console.log('Servidor corriendo en http://localhost:3000');
-});
+    console.log(`El servidor esta escuchando en el puerto http://localhost:3000`);
+})  
+
+//Codigo para usar las rutas 
+app.use(express.json())
+app.use('/categorias', router);
+app.use('/productos',ProductosRouter)
